@@ -19,10 +19,12 @@ class Game {
         const rock = 1
         const paper = 2
         const scissors = 3
+        let rounds = 0
         document.getElementById("btn_rock").addEventListener("click",function(){
             let opponentChoose = Math.floor(Math.random() * 3) + 1
             //console.log(opponentChoose)
             //console.log(rock)
+            rounds += 1
             if (opponentChoose == rock){
                 game.ties +=1
                 //console.log(opponentChoose)
@@ -35,6 +37,7 @@ class Game {
                 game.win += 1
                 //console.log(game.win)
             }
+            document.getElementById("rounds").innerHTML = "ROUNDS: "+ rounds 
             document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ game.win
             document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ game.ties
             document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss
@@ -43,6 +46,7 @@ class Game {
         })
         document.getElementById("btn_paper").addEventListener("click",function(){
             let opponentChoose = Math.floor(Math.random() * 3) + 1
+            rounds += 1
             if (opponentChoose == rock){
                 game.win +=1
             }
@@ -52,6 +56,7 @@ class Game {
             if (opponentChoose == scissors){
                 game.loss += 1
             }
+            document.getElementById("rounds").innerHTML = "ROUNDS: "+ rounds 
             document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ game.win
             document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ game.ties
             document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss
@@ -59,6 +64,7 @@ class Game {
         })
         document.getElementById("btn_scissors").addEventListener("click",function(){
             let opponentChoose = Math.floor(Math.random() * 3) + 1
+            rounds += 1
             if (opponentChoose == rock){
                 game.loss +=1
             }
@@ -68,6 +74,7 @@ class Game {
             if (opponentChoose == scissors){
                 game.ties += 1
             }
+            document.getElementById("rounds").innerHTML = "ROUNDS: "+ rounds 
             document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ game.win
             document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ game.ties
             document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss
