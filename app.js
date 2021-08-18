@@ -24,7 +24,11 @@ class Game {
             let opponentChoose = Math.floor(Math.random() * 3) + 1
             //console.log(opponentChoose)
             //console.log(rock)
-            rounds += 1
+            rounds += 1 
+            console.log(opponentChoose)
+            console.log(rock)
+            let youChoose= rock
+            game.gameResults(opponentChoose,youChoose,rounds)
             if (opponentChoose == rock){
                 game.ties +=1
                 //console.log(opponentChoose)
@@ -47,6 +51,8 @@ class Game {
         document.getElementById("btn_paper").addEventListener("click",function(){
             let opponentChoose = Math.floor(Math.random() * 3) + 1
             rounds += 1
+            let youChoose = paper
+            game.gameResults(opponentChoose,youChoose,rounds)
             if (opponentChoose == rock){
                 game.win +=1
             }
@@ -65,6 +71,8 @@ class Game {
         document.getElementById("btn_scissors").addEventListener("click",function(){
             let opponentChoose = Math.floor(Math.random() * 3) + 1
             rounds += 1
+            let youChoose = scissors
+            game.gameResults(opponentChoose,youChoose,rounds)
             if (opponentChoose == rock){
                 game.loss +=1
             }
@@ -82,7 +90,49 @@ class Game {
         })
         //console.log(game)
     }
-    gameResults(){
-
+    gameResults(opponentChoose,youChoose,rounds){
+        const rock = 1
+        const paper = 2
+        const scissors = 3
+        let ul = document.getElementById("show_result_list")
+        let li = document.createElement("li")
+        if (youChoose == rock && opponentChoose==rock) {
+            opponentChoose = "<img src = 'Rock.png'>"
+            youChoose = "<img src = 'Rock.png'>"
+        }
+        if (youChoose == paper && opponentChoose==rock){
+            opponentChoose = "<img src = 'Rock.png'>"
+            youChoose = "<img src = 'Rock.png'>"
+        }
+        if (youChoose == scissors && opponentChoose==rock){
+            opponentChoose = "<img src = 'Rock.png'>"
+            youChoose = "<img src = 'Rock.png'>"
+        }
+        if (youChoose == rock  && opponentChoose==paper){
+            opponentChoose = "<img src = 'Rock.png'>"
+            youChoose = "<img src = 'Rock.png'>"
+        }
+        if (youChoose == paper && opponentChoose==paper){
+            opponentChoose = "<img src = 'Rock.png'>"
+            youChoose = "<img src = 'Rock.png'>"
+        }
+        if (youChoose == scissors && opponentChoose==paper){
+            opponentChoose = "<img src = 'Rock.png'>"
+            youChoose = "<img src = 'Rock.png'>"
+        }
+        if (youChoose == rock  && opponentChoose==scissors){
+            opponentChoose = "<img src = 'Rock.png'>"
+            youChoose = "<img src = 'Rock.png'>"
+        }
+        if (youChoose == paper && opponentChoose==scissors){
+            opponentChoose = "<img src = 'Rock.png'>"
+            youChoose = "<img src = 'Rock.png'>"
+        }
+        if (youChoose == scissors && opponentChoose==scissors){
+            opponentChoose = "<img src = 'Rock.png'>"
+            youChoose = "<img src = 'Rock.png'>"
+        }
+            li.innerHTML = ""+opponentChoose + ""+rounds + ""+youChoose
+            ul.appendChild(li)
     }
 }
