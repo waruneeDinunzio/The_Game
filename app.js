@@ -1,26 +1,50 @@
-startGame = () => {
+let game
     document.querySelector("#spongebob").addEventListener ("click", function () {
-        /*if(game){
+        if(game){
            game.gameReset()
-           console.log(game)
            game.startGame()
+           console.log(game)
         } else{
         game = new Game()
         //game.gameReset();
         game.startGame()
         console.log(game)
-        }*/
-        if(typeof game == 'object')
-        console.log(game)
-    })
-    document.querySelector("#patrick").addEventListener ("click", function () {
-        game = new Game()
-        game.gameReset();
-        game.startPatrickGame()
+        }
         
     })
-}
-startGame()
+    document.querySelector("#patrick").addEventListener ("click", function () {
+        
+        game = new Game()
+        //game.gameReset();
+        game.startPatrickGame()
+        gameReset()
+    })
+    gameReset=()=> {
+        document.getElementById("endGame").addEventListener("click",function(){
+            let ulChil = document.querySelector('#show_result_list').children;
+            console.log(ulChil)
+            let ul = document.querySelector('#show_result_list')
+            if(ulChil.length > 0){
+
+                ul.innerHTML =""
+            }
+            
+            game.rounds = 0
+            game.win = 0
+            game.ties = 0
+            game.loss = 0
+            //console.log("you click to end game")
+            /*document.getElementById("rounds").innerHTML = "ROUNDS: "+ game.rounds 
+            document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ game.win
+            document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ game.ties
+            document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss 
+            ul.innerHTML = "";*/ 
+            //console.log(ulChil) 
+      })
+      //console.log("you click to end game")
+    }
+
+//startGame()
 class Game {
     constructor(win, ties, loss, gameStarted){
         this.win = 0
@@ -34,6 +58,7 @@ class Game {
         const paper = 2
         const scissors = 3
         let rounds = 0
+        //game.gameReset();
         document.getElementById("btn_rock").addEventListener("click",function(){
             let opponentChoose = Math.floor(Math.random() * 3) + 1
             //console.log(opponentChoose)
@@ -110,6 +135,7 @@ class Game {
         const paper = 2
         const scissors = 3
         let rounds = 0
+        
         document.getElementById("btn_rock").addEventListener("click",function(){
             let opponentChoose = Math.floor(Math.random() * 2) + 1
             //console.log(opponentChoose)
@@ -178,6 +204,7 @@ class Game {
             document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss
 
         })
+        gameReset();
     }
 
     gameResults(opponentChoose,youChoose,rounds){
@@ -226,7 +253,7 @@ class Game {
             ul.appendChild(li)
     }
 
-    gameReset() {
+    /*gameReset() {
         document.getElementById("endGame").addEventListener("click",function(){
             //let ul = document.querySelector('#show_result_list').children;
             let ul = document.querySelector('#show_result_list')
@@ -242,5 +269,5 @@ class Game {
             ul.innerHTML = "";   
       })
       //console.log("you click to end game")
-    }
+    }*/
 }
