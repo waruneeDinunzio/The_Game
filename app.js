@@ -1,14 +1,14 @@
 let game
     document.querySelector("#spongebob").addEventListener ("click", function () {
         if(game){
-           game.gameReset()
+           gameReset()
            game.startGame()
            console.log(game)
         } else{
         game = new Game()
         //game.gameReset();
         game.startGame()
-        console.log(game)
+        //console.log(game)
         }
         
     })
@@ -214,42 +214,42 @@ class Game {
         let ul = document.getElementById("show_result_list")
         let li = document.createElement("li")
         if (youChoose == rock && opponentChoose==rock) {
-            opponentChoose = "<img src = 'Rock.png'>"
-            youChoose = "<img src = 'Rock.png'>"
+            youChoose = "<img src = 'picture/greenRock.jpg'>"
+            opponentChoose = "<img src = 'picture/greenRock.jpg'>"  
         }
         if (youChoose == paper && opponentChoose==rock){
-            opponentChoose = "<img src = 'Rock.png'>"
-            youChoose = "<img src = 'Rock.png'>"
+            youChoose = "<img src = 'picture/greenPaper.jpg'>"
+            opponentChoose = "<img src = 'picture/redRock.jpg'>"
         }
         if (youChoose == scissors && opponentChoose==rock){
-            opponentChoose = "<img src = 'Rock.png'>"
-            youChoose = "<img src = 'Rock.png'>"
+            youChoose = "<img src = 'picture/redScissor.jpg'>"
+            opponentChoose = "<img src = 'picture/greenRock.jpg'>"
         }
         if (youChoose == rock  && opponentChoose==paper){
-            opponentChoose = "<img src = 'Rock.png'>"
-            youChoose = "<img src = 'Rock.png'>"
+            youChoose = "<img src = 'picture/redRock.jpg'>"
+            opponentChoose = "<img src = 'picture/greenPaper.jpg'>"
         }
         if (youChoose == paper && opponentChoose==paper){
-            opponentChoose = "<img src = 'Rock.png'>"
-            youChoose = "<img src = 'Rock.png'>"
+            youChoose = "<img src = 'picture/greenPaper.jpg'>"
+            opponentChoose = "<img src = 'picture/greenPaper.jpg'>"
         }
         if (youChoose == scissors && opponentChoose==paper){
-            opponentChoose = "<img src = 'Rock.png'>"
-            youChoose = "<img src = 'Rock.png'>"
+            youChoose = "<img src = 'picture/greenScissor.jpg'>"
+            opponentChoose = "<img src = 'picture/redPaper.jpg'>"
         }
         if (youChoose == rock  && opponentChoose==scissors){
-            opponentChoose = "<img src = 'Rock.png'>"
-            youChoose = "<img src = 'Rock.png'>"
+            youChoose = "<img src = 'picture/greenRock.jpg'>"
+            opponentChoose = "<img src = 'picture/redScissor.jpg'>"
         }
         if (youChoose == paper && opponentChoose==scissors){
-            opponentChoose = "<img src = 'Rock.png'>"
-            youChoose = "<img src = 'Rock.png'>"
+            youChoose = "<img src = 'picture/redPaper.jpg'>"
+            opponentChoose = "<img src = 'picture/greenScissor.jpg'>"
         }
         if (youChoose == scissors && opponentChoose==scissors){
-            opponentChoose = "<img src = 'Rock.png'>"
-            youChoose = "<img src = 'Rock.png'>"
+            youChoose = "<img src = 'picture/greenScissor.jpg'>"
+            opponentChoose = "<img src = 'picture/greenScissor.jpg'>"
         }
-            li.innerHTML = ""+opponentChoose + ""+rounds + ""+youChoose
+            li.innerHTML = ""+youChoose + ""+rounds + ""+opponentChoose
             ul.appendChild(li)
     }
 
