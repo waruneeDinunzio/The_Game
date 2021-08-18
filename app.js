@@ -1,15 +1,23 @@
 startGame = () => {
     document.querySelector("#spongebob").addEventListener ("click", function () {
+        /*if(game){
+           game.gameReset()
+           console.log(game)
+           game.startGame()
+        } else{
         game = new Game()
         //game.gameReset();
         game.startGame()
-        //console.log("you click spongebob")
+        console.log(game)
+        }*/
+        if(typeof game == 'object')
+        console.log(game)
     })
     document.querySelector("#patrick").addEventListener ("click", function () {
         game = new Game()
-        //game.gameReset();
+        game.gameReset();
         game.startPatrickGame()
-        //console.log("you click spongebob")
+        
     })
 }
 startGame()
@@ -31,8 +39,8 @@ class Game {
             //console.log(opponentChoose)
             //console.log(rock)
             rounds += 1 
-            console.log(opponentChoose)
-            console.log(rock)
+            //console.log(opponentChoose)
+            //console.log(rock)
             let youChoose= rock
             game.gameResults(opponentChoose,youChoose,rounds)
             if (opponentChoose == rock){
@@ -107,8 +115,8 @@ class Game {
             //console.log(opponentChoose)
             //console.log(rock)
             rounds += 1 
-            console.log(opponentChoose)
-            console.log(rock)
+            //console.log(opponentChoose)
+            //console.log(rock)
             let youChoose= rock
             game.gameResults(opponentChoose,youChoose,rounds)
             if (opponentChoose == rock){
@@ -202,7 +210,7 @@ class Game {
             opponentChoose = "<img src = 'Rock.png'>"
             youChoose = "<img src = 'Rock.png'>"
         }
-        /*if (youChoose == rock  && opponentChoose==scissors){
+        if (youChoose == rock  && opponentChoose==scissors){
             opponentChoose = "<img src = 'Rock.png'>"
             youChoose = "<img src = 'Rock.png'>"
         }
@@ -213,8 +221,26 @@ class Game {
         if (youChoose == scissors && opponentChoose==scissors){
             opponentChoose = "<img src = 'Rock.png'>"
             youChoose = "<img src = 'Rock.png'>"
-        }*/
+        }
             li.innerHTML = ""+opponentChoose + ""+rounds + ""+youChoose
             ul.appendChild(li)
+    }
+
+    gameReset() {
+        document.getElementById("endGame").addEventListener("click",function(){
+            //let ul = document.querySelector('#show_result_list').children;
+            let ul = document.querySelector('#show_result_list')
+            game.rounds = 0
+            game.win = 0
+            game.ties = 0
+            game.loss = 0
+            //console.log("you click to end game")
+            document.getElementById("rounds").innerHTML = "ROUNDS: "+ game.rounds 
+            document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ game.win
+            document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ game.ties
+            document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss 
+            ul.innerHTML = "";   
+      })
+      //console.log("you click to end game")
     }
 }
