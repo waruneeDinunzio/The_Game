@@ -15,10 +15,16 @@ let game
     
     // for Patric mode
     document.querySelector("#patrick").addEventListener ("click", function () {
-        game = new Game()
-        game.gameReset()
-        game.startPatrickGame()
-        //gameReset()
+        if(game){//if already has game object
+            game.gameReset() //reset game
+            game.startPatrickGame() //start to play game
+            console.log(game)//for test if it already has game object
+         } else{ //if not game object
+         game = new Game() //create new game
+         //game.gameReset();
+         game.startPatrickGame()
+         //console.log(game)
+         }
     })
     //try to put gameReset() outside of Class game but still not working
     /*gameReset=()=> {
