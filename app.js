@@ -258,6 +258,9 @@ class Game {
             ul.appendChild(li)
     }
 
+    /* Not set the end game button yet (new idea: click end game to go back to strating page with spongebob or patrick button) 
+    Just want to test gameReset() when click spongebob or click patrick to strat the new game. it'll call 
+    gameReset() so it should be reset all game object property. ???*/
     gameReset() {
         //document.getElementById("endGame").addEventListener("click",function(){
             //let ul = document.querySelector('#show_result_list').children;
