@@ -2,3 +2,9 @@ img {
     width: 5vw;
     height: 5vh;
 }
+#gamePlaying {
+    display: none;
+}
+#game-over-message {
+    display: none;
+}

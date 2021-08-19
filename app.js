@@ -4,11 +4,13 @@ let game
            game.gameReset() //reset game
            game.startGame() //start to play game
            console.log(game)//for test if it already has game object
+           game.endGame()
         } else{ //if not game object
-        game = new Game() //create new game
-        //game.gameReset();
-        game.startGame()
-        //console.log(game)
+            game = new Game() //create new game
+            //game.gameReset();
+            game.startGame()
+            game.endGame()
+            //console.log(game)
         }
         
     })
@@ -54,24 +56,31 @@ let game
 
 //startGame()
 class Game {
-    constructor(win, ties, loss, gameStarted){
+    constructor(win, ties, loss, rounds,gameStarted){
         this.win = 0
         this.ties = 0
         this.loss = 0
+        this.rounds = 0
         this.gameStarted = false
     }
+
     startGame(){
         //let opponentChoose = Math.floor(Math.random() * 3) + 1
+        this.gameStarted = true;
+        const hideOverlay = document.getElementById('overlay');
+        hideOverlay.style.display = 'none';
+        const hideGame = document.getElementById('gamePlaying');
+        hideGame.style.display = 'block';
         const rock = 1
         const paper = 2
         const scissors = 3
-        let rounds = 0
-        //game.gameReset();
+        //let rounds = 0
+        //game.gameReset()
         document.getElementById("btn_rock").addEventListener("click",function(){
             let opponentChoose = Math.floor(Math.random() * 3) + 1
             //console.log(opponentChoose)
             //console.log(rock)
-            rounds += 1 
+            game.rounds += 1 
             //console.log(opponentChoose)
             //console.log(rock)
             let youChoose= rock
@@ -88,7 +97,7 @@ class Game {
                 game.win += 1
                 //console.log(game.win)
             }
-            document.getElementById("rounds").innerHTML = "ROUNDS: "+ rounds 
+            document.getElementById("rounds").innerHTML = "ROUNDS: "+ game.rounds 
             document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ game.win
             document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ game.ties
             document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss
@@ -97,7 +106,7 @@ class Game {
         })
         document.getElementById("btn_paper").addEventListener("click",function(){
             let opponentChoose = Math.floor(Math.random() * 3) + 1
-            rounds += 1
+            game.rounds += 1
             let youChoose = paper
             game.gameResults(opponentChoose,youChoose,rounds)
             if (opponentChoose == rock){
@@ -109,7 +118,7 @@ class Game {
             if (opponentChoose == scissors){
                 game.loss += 1
             }
-            document.getElementById("rounds").innerHTML = "ROUNDS: "+ rounds 
+            document.getElementById("rounds").innerHTML = "ROUNDS: "+ game.rounds 
             document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ game.win
             document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ game.ties
             document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss
@@ -117,7 +126,7 @@ class Game {
         })
         document.getElementById("btn_scissors").addEventListener("click",function(){
             let opponentChoose = Math.floor(Math.random() * 3) + 1
-            rounds += 1
+            game.rounds += 1
             let youChoose = scissors
             game.gameResults(opponentChoose,youChoose,rounds)
             if (opponentChoose == rock){
@@ -129,7 +138,7 @@ class Game {
             if (opponentChoose == scissors){
                 game.ties += 1
             }
-            document.getElementById("rounds").innerHTML = "ROUNDS: "+ rounds 
+            document.getElementById("rounds").innerHTML = "ROUNDS: "+ game.rounds 
             document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ game.win
             document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ game.ties
             document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss
@@ -140,17 +149,21 @@ class Game {
 
     // Start to play with Patric who is a star fish. His hand can't not do scissor so he just do rock and paper
     startPatrickGame(){
-        
+        this.gameStarted = true;
+        const hideOverlay = document.getElementById('overlay');
+        hideOverlay.style.display = 'none';
+        const hideGame = document.getElementById('gamePlaying');
+        hideGame.style.display = 'block';
         const rock = 1
         const paper = 2
         const scissors = 3
-        let rounds = 0
+        //let rounds = 0
         
         document.getElementById("btn_rock").addEventListener("click",function(){
             let opponentChoose = Math.floor(Math.random() * 2) + 1
             //console.log(opponentChoose)
             //console.log(rock)
-            rounds += 1 
+            game.rounds += 1 
             //console.log(opponentChoose)
             //console.log(rock)
             let youChoose= rock
@@ -167,7 +180,7 @@ class Game {
                 game.win += 1
                 //console.log(game.win)
             }*/
-            document.getElementById("rounds").innerHTML = "ROUNDS: "+ rounds 
+            document.getElementById("rounds").innerHTML = "ROUNDS: "+ game.rounds 
             document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ game.win
             document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ game.ties
             document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss
@@ -176,7 +189,7 @@ class Game {
         })
         document.getElementById("btn_paper").addEventListener("click",function(){
             let opponentChoose = Math.floor(Math.random() * 2) + 1
-            rounds += 1
+            game.rounds += 1
             let youChoose = paper
             game.gameResults(opponentChoose,youChoose,rounds)
             if (opponentChoose == rock){
@@ -188,7 +201,7 @@ class Game {
             /*if (opponentChoose == scissors){
                 game.loss += 1
             }*/
-            document.getElementById("rounds").innerHTML = "ROUNDS: "+ rounds 
+            document.getElementById("rounds").innerHTML = "ROUNDS: "+ game.rounds 
             document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ game.win
             document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ game.ties
             document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss
@@ -196,7 +209,7 @@ class Game {
         })
         document.getElementById("btn_scissors").addEventListener("click",function(){
             let opponentChoose = Math.floor(Math.random() * 2) + 1
-            rounds += 1
+            game.rounds += 1
             let youChoose = scissors
             game.gameResults(opponentChoose,youChoose,rounds)
             if (opponentChoose == rock){
@@ -208,7 +221,7 @@ class Game {
             /*if (opponentChoose == scissors){
                 game.ties += 1
             }*/
-            document.getElementById("rounds").innerHTML = "ROUNDS: "+ rounds 
+            document.getElementById("rounds").innerHTML = "ROUNDS: "+ game.rounds 
             document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ game.win
             document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ game.ties
             document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss
@@ -217,7 +230,7 @@ class Game {
         //game.gameReset();
     }
 
-    gameResults(opponentChoose,youChoose,rounds){
+    gameResults(opponentChoose,youChoose){
         //game.gameReset()
         const rock = 1
         const paper = 2
@@ -260,7 +273,7 @@ class Game {
             youChoose = "<img src = 'picture/greenScissor.jpg'>"
             opponentChoose = "<img src = 'picture/greenScissor.jpg'>"
         }
-            li.innerHTML = ""+youChoose + ""+rounds + ""+opponentChoose
+            li.innerHTML = ""+youChoose + ""+game.rounds + ""+opponentChoose
             ul.appendChild(li)
     }
 
@@ -284,5 +297,17 @@ class Game {
             ul.innerHTML = "";   
       } //)
       //console.log("you click to end game")
+    endGame() {
+        document.getElementById("endGame").addEventListener("click",function(){
+        this.gameStarted = false;
+        const hideOverlay = document.getElementById('overlay');
+        hideOverlay.style.display = 'block';
+        const hideGame = document.getElementById('gamePlaying');
+        hideGame.style.display = 'none';
+        const showEndGameMessage = document.getElementById('game-over-message')
+        showEndGameMessage.style.display = 'block'
+        showEndGameMessage.innerHTML = 'You play: '+game.rounds+' rounds with '+ game.win+' win '+game.ties+ ' ties and '+
+         game.loss + ' loss! Would you like to play again!'
+        }) 
     }
-//}
+}
