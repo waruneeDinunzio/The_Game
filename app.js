@@ -1,25 +1,27 @@
 let game
     document.querySelector("#spongebob").addEventListener ("click", function () {
-        if(game){
-           gameReset()
-           game.startGame()
-           console.log(game)
-        } else{
-        game = new Game()
+        if(game){//if already has game object
+           game.gameReset() //reset game
+           game.startGame() //start to play game
+           console.log(game)//for test if it already has game object
+        } else{ //if not game object
+        game = new Game() //create new game
         //game.gameReset();
         game.startGame()
         //console.log(game)
         }
         
     })
+    
+    // for Patric mode
     document.querySelector("#patrick").addEventListener ("click", function () {
-        
         game = new Game()
-        //game.gameReset();
+        game.gameReset()
         game.startPatrickGame()
-        gameReset()
+        //gameReset()
     })
-    gameReset=()=> {
+    //try to put gameReset() outside of Class game but still not working
+    /*gameReset=()=> {
         document.getElementById("endGame").addEventListener("click",function(){
             let ulChil = document.querySelector('#show_result_list').children;
             console.log(ulChil)
@@ -38,11 +40,11 @@ let game
             document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ game.win
             document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ game.ties
             document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss 
-            ul.innerHTML = "";*/ 
+            ul.innerHTML = "";
             //console.log(ulChil) 
       })
       //console.log("you click to end game")
-    }
+    }*/
 
 //startGame()
 class Game {
@@ -127,10 +129,12 @@ class Game {
             document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss
 
         })
+        
     }
 
+    // Start to play with Patric who is a star fish. His hand can't not do scissor so he just do rock and paper
     startPatrickGame(){
-        //let opponentChoose = Math.floor(Math.random() * 3) + 1
+        
         const rock = 1
         const paper = 2
         const scissors = 3
@@ -204,10 +208,11 @@ class Game {
             document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss
 
         })
-        gameReset();
+        //game.gameReset();
     }
 
     gameResults(opponentChoose,youChoose,rounds){
+        //game.gameReset()
         const rock = 1
         const paper = 2
         const scissors = 3
@@ -253,10 +258,11 @@ class Game {
             ul.appendChild(li)
     }
 
-    /*gameReset() {
-        document.getElementById("endGame").addEventListener("click",function(){
+    gameReset() {
+        //document.getElementById("endGame").addEventListener("click",function(){
             //let ul = document.querySelector('#show_result_list').children;
             let ul = document.querySelector('#show_result_list')
+            console.log(game)
             game.rounds = 0
             game.win = 0
             game.ties = 0
@@ -267,7 +273,7 @@ class Game {
             document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ game.ties
             document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss 
             ul.innerHTML = "";   
-      })
+      } //)
       //console.log("you click to end game")
-    }*/
-}
+    }
+//}
