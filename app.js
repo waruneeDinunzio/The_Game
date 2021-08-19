@@ -1,5 +1,5 @@
-let game
-    document.querySelector("#spongebob").addEventListener ("click", function () {
+//let game
+    /*document.querySelector("#spongebob").addEventListener ("click", function () {
         if(game){//if already has game object
            game.gameReset() //reset game
            game.startGame() //start to play game
@@ -13,47 +13,10 @@ let game
             //console.log(game)
         }
         
-    })
+    })*/
     
     // for Patric mode
-    document.querySelector("#patrick").addEventListener ("click", function () {
-        if(game){//if already has game object
-            game.gameReset() //reset game
-            game.startPatrickGame() //start to play game
-            console.log(game)//for test if it already has game object
-         } else{ //if not game object
-         game = new Game() //create new game
-         //game.gameReset();
-         game.startPatrickGame()
-         //console.log(game)
-         }
-    })
-    //try to put gameReset() outside of Class game but still not working
-    /*gameReset=()=> {
-        document.getElementById("endGame").addEventListener("click",function(){
-            let ulChil = document.querySelector('#show_result_list').children;
-            console.log(ulChil)
-            let ul = document.querySelector('#show_result_list')
-            if(ulChil.length > 0){
-
-                ul.innerHTML =""
-            }
-            
-            game.rounds = 0
-            game.win = 0
-            game.ties = 0
-            game.loss = 0
-            //console.log("you click to end game")
-            /*document.getElementById("rounds").innerHTML = "ROUNDS: "+ game.rounds 
-            document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ game.win
-            document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ game.ties
-            document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss 
-            ul.innerHTML = "";
-            //console.log(ulChil) 
-      })
-      //console.log("you click to end game")
-    }*/
-
+const ul = document.querySelector('#show_result_list')  
 //startGame()
 class Game {
     constructor(win, ties, loss, rounds,gameStarted){
@@ -104,6 +67,7 @@ class Game {
             //console.log(game)
             
         })
+
         document.getElementById("btn_paper").addEventListener("click",function(){
             let opponentChoose = Math.floor(Math.random() * 3) + 1
             game.rounds += 1
@@ -124,6 +88,7 @@ class Game {
             document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss
             //console.log(game)
         })
+
         document.getElementById("btn_scissors").addEventListener("click",function(){
             let opponentChoose = Math.floor(Math.random() * 3) + 1
             game.rounds += 1
@@ -160,33 +125,34 @@ class Game {
         //let rounds = 0
         
         document.getElementById("btn_rock").addEventListener("click",function(){
-            let opponentChoose = Math.floor(Math.random() * 2) + 1
+            //let rock = 2
+        let opponentChoose = Math.floor(Math.random() * 2) + 1
+        //console.log(opponentChoose)
+        //console.log(rock)
+        game.rounds += 1 
+        //console.log(opponentChoose)
+        //console.log(rock)
+        let youChoose= rock
+        game.gameResults(opponentChoose,youChoose,rounds)
+        if (opponentChoose == rock){
+            game.ties +=1
             //console.log(opponentChoose)
-            //console.log(rock)
-            game.rounds += 1 
-            //console.log(opponentChoose)
-            //console.log(rock)
-            let youChoose= rock
-            game.gameResults(opponentChoose,youChoose,rounds)
-            if (opponentChoose == rock){
-                game.ties +=1
-                //console.log(opponentChoose)
-            }
-            if (opponentChoose == paper){
-                game.loss += 1
-                //console.log(game.loss)
-            }
-            /*if (opponentChoose == scissors){
-                game.win += 1
-                //console.log(game.win)
-            }*/
-            document.getElementById("rounds").innerHTML = "ROUNDS: "+ game.rounds 
-            document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ game.win
-            document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ game.ties
-            document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss
-            //console.log(game)
-            
+        }
+        if (opponentChoose == paper){
+            game.loss += 1
+            //console.log(game.loss)
+        }
+        /*if (opponentChoose == scissors){
+            game.win += 1
+            //console.log(game.win)
+        }*/
+        document.getElementById("rounds").innerHTML = "ROUNDS: "+ game.rounds 
+        document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ game.win
+        document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ game.ties
+        document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss
+        //console.log(game)
         })
+
         document.getElementById("btn_paper").addEventListener("click",function(){
             let opponentChoose = Math.floor(Math.random() * 2) + 1
             game.rounds += 1
@@ -230,6 +196,7 @@ class Game {
         //game.gameReset();
     }
 
+    
     gameResults(opponentChoose,youChoose){
         //game.gameReset()
         const rock = 1
@@ -279,26 +246,27 @@ class Game {
 
     /* Not set the end game button yet (new idea: click end game to go back to strating page with spongebob or patrick button) 
     Just want to test gameReset() when click spongebob or click patrick to strat the new game. it'll call 
-    gameReset() so it should be reset all game object property. ???*/
+    gameReset() so it should be reset all game object property. ???
     gameReset() {
         //document.getElementById("endGame").addEventListener("click",function(){
             //let ul = document.querySelector('#show_result_list').children;
-            let ul = document.querySelector('#show_result_list')
+            
             console.log(game)
-            game.rounds = 0
-            game.win = 0
-            game.ties = 0
-            game.loss = 0
+            this.rounds = 0
+            this.win = 0
+            this.ties = 0
+            this.loss = 0
             //console.log("you click to end game")
-            document.getElementById("rounds").innerHTML = "ROUNDS: "+ game.rounds 
-            document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ game.win
-            document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ game.ties
-            document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss 
-            ul.innerHTML = "";   
-      } //)
-      //console.log("you click to end game")
+
+            document.getElementById("rounds").innerHTML = "ROUNDS: "+ this.rounds 
+            document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ this.win
+            document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ this.ties
+            document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ this.loss 
+            ul.innerHTML = "";  
+            
+      } 
+*/
     endGame() {
-        document.getElementById("endGame").addEventListener("click",function(){
         this.gameStarted = false;
         const hideOverlay = document.getElementById('overlay');
         hideOverlay.style.display = 'block';
@@ -308,6 +276,35 @@ class Game {
         showEndGameMessage.style.display = 'block'
         showEndGameMessage.innerHTML = 'You play: '+game.rounds+' rounds with '+ game.win+' win '+game.ties+ ' ties and '+
          game.loss + ' loss! Would you like to play again!'
-        }) 
+        
     }
 }
+/*if(game){//if already has game object
+    game.gameReset() //reset game
+    game.startPatrickGame() //start to play game
+    console.log(game)//for test if it already has game object
+    game.endGame()
+ } else{ //if not game object
+ game = new Game() //create new game
+ //game.gameReset();
+ game.startPatrickGame()
+ //console.log(game)
+ game.endGame()
+ }*/
+
+
+game = new Game()
+document.querySelector("#patrick").addEventListener ("click", function () {
+    game.startPatrickGame()   
+    
+})
+document.querySelector("#spongebob").addEventListener ("click", function (){
+    game.startGame()
+})
+
+document.getElementById("endGame").addEventListener("click",function(){
+    //game.endGame()
+    //game.gameReset()
+    window.location.reload()
+    
+})

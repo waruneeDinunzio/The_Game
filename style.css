@@ -1,10 +1,48 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+body { 
+    background: url(picture/backgroundSea.jpg) ;
+
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }*
 img {
-    width: 5vw;
-    height: 5vh;
+    width: 2vw;
+    height: vh;
 }
 #gamePlaying {
     display: none;
 }
 #game-over-message {
-    display: none;
+    display: block;
+}
+.start {
+    display:grid;
+    grid-template-columns:20% 20% 20% 20% 20% ;
+    grid-template-rows: 50% 50%;
+}
+.header {
+    
+    grid-column-start: 1;
+    grid-column-end: span 5;
+}
+.spongebobButton {
+    grid-column: 2;
+    grid-row: 6;
+}
+.patrickButton {
+    grid-column: 4;
+    grid-row: 6;
+}
+/*.main-containner {
+    
+    background-image: url(picture/backgroundSea.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}*/
+.header,#banner {
+    text-align: center;
+
 }
