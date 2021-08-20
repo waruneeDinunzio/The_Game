@@ -2,17 +2,14 @@
 const ul = document.querySelector('#show_result_list')  
 // create class Game for game
 class Game {
-    constructor(win, ties, loss, rounds,gameStarted){
+    constructor(win, ties, loss, rounds){
         this.win = 0
         this.ties = 0
         this.loss = 0
         this.rounds = 0
-        this.gameStarted = false
     }
-
+// create startGame function
     startGame(){
-        //let opponentChoose = Math.floor(Math.random() * 3) + 1
-        this.gameStarted = true;
         // hide first page and show game page
         const hideOverlay = document.getElementById('overlay');
         hideOverlay.style.display = 'none';
@@ -23,18 +20,17 @@ class Game {
         const scissors = 3
         // Add eventlistener when user click rock button
         document.getElementById("btn_rock").addEventListener("click",function(){
-            let opponentChoose = Math.floor(Math.random() * 3) + 1
-    
+            // opponent use ramdom to choose rock paper or scissers
+            const opponentChoose = Math.floor(Math.random() * 3) + 1
+            // You choose rock = 1
+            const youChoose= rock
+            // Increment rounds by 1 when click
             game.rounds += 1 
-            //console.log(opponentChoose)
-            //console.log(rock)
-            let youChoose= rock
             document.getElementById("rock").style.display = 'block'
             document.getElementById("paper").style.display = 'none'
             document.getElementById("scissors").style.display= 'none'
-
-            
-            game.gameResults(opponentChoose,youChoose)
+            // call gameResults function
+            game.gameResults(opponentChoose)
             if (opponentChoose == rock){
                 game.ties +=1
                 document.getElementById("opponent_rock").style.display = 'block'
@@ -57,18 +53,16 @@ class Game {
             document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ game.win
             document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ game.ties
             document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss
-            //console.log(game)
-            
         })
 
         document.getElementById("btn_paper").addEventListener("click",function(){
-            let opponentChoose = Math.floor(Math.random() * 3) + 1
+            const opponentChoose = Math.floor(Math.random() * 3) + 1
             game.rounds += 1
-            let youChoose = paper
+            const youChoose = paper
             document.getElementById("rock").style.display = 'none'
             document.getElementById("paper").style.display = 'block'
             document.getElementById("scissors").style.display= 'none'
-            game.gameResults(opponentChoose,youChoose,rounds)
+            game.gameResults(opponentChoose,youChoose)
             if (opponentChoose == rock){
                 game.win +=1
                 document.getElementById("opponent_rock").style.display = 'block'
@@ -91,17 +85,17 @@ class Game {
             document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ game.win
             document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ game.ties
             document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss
-            //console.log(game)
         })
 
         document.getElementById("btn_scissors").addEventListener("click",function(){
-            let opponentChoose = Math.floor(Math.random() * 3) + 1
+            const opponentChoose = Math.floor(Math.random() * 3) + 1
             game.rounds += 1
-            let youChoose = scissors
+            const youChoose = scissors
+            // Show scissors's picture
             document.getElementById("rock").style.display = 'none'
             document.getElementById("paper").style.display = 'none'
             document.getElementById("scissors").style.display= 'block'
-            game.gameResults(opponentChoose,youChoose,rounds)
+            game.gameResults(opponentChoose,youChoose)
             if (opponentChoose == rock){
                 game.loss +=1
                 document.getElementById("opponent_rock").style.display = 'block'
@@ -130,7 +124,6 @@ class Game {
 
     // Start to play with Patric who is a star fish. His hand can't not do scissor so he just do rock and paper
     startPatrickGame(){
-        this.gameStarted = true;
         const hideOverlay = document.getElementById('overlay');
         hideOverlay.style.display = 'none';
         const hideGame = document.getElementById('gamePlaying');
@@ -140,74 +133,61 @@ class Game {
         const scissors = 3
         
         document.getElementById("btn_rock").addEventListener("click",function(){
-        // opponent use ramdom to choose rock paper or scissers
-        let opponentChoose = Math.floor(Math.random() * 2) + 1
-        // you choose rock = 2
-        let youChoose= rock
-        // Increment rounds by 1 when click
-        game.rounds += 1 
-        // call gameResults functon
-        game.gameResults(opponentChoose,youChoose)
-        if (opponentChoose == rock){
-            game.ties +=1
-            //console.log(opponentChoose)
-        }
-        if (opponentChoose == paper){
-            game.loss += 1
-            //console.log(game.loss)
-        }
-        /*if (opponentChoose == scissors){
-            game.win += 1
-            //console.log(game.win)
-        }*/
-        document.getElementById("rounds").innerHTML = "ROUNDS: "+ game.rounds 
-        document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ game.win
-        document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ game.ties
-        document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss
-        //console.log(game)
+            // opponent(Patric) use ramdom to choose rock or paper
+            let opponentChoose = Math.floor(Math.random() * 2) + 1
+            // you choose rock = 2
+            let youChoose= rock
+            // Increment rounds by 1 when click
+            game.rounds += 1 
+            // call gameResults functon
+            game.gameResults(opponentChoose,youChoose)
+            if (opponentChoose == rock){
+                game.ties +=1
+            }
+            if (opponentChoose == paper){
+                game.loss += 1
+            }
+
+            document.getElementById("rounds").innerHTML = "ROUNDS: "+ game.rounds 
+            document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ game.win
+            document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ game.ties
+            document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss
         })
 
         document.getElementById("btn_paper").addEventListener("click",function(){
             let opponentChoose = Math.floor(Math.random() * 2) + 1
             game.rounds += 1
             let youChoose = paper
-            game.gameResults(opponentChoose,youChoose,rounds)
+            game.gameResults(opponentChoose,youChoose)
             if (opponentChoose == rock){
                 game.win +=1
             }
             if (opponentChoose == paper){
                 game.ties += 1
             }
-            /*if (opponentChoose == scissors){
-                game.loss += 1
-            }*/
+        
             document.getElementById("rounds").innerHTML = "ROUNDS: "+ game.rounds 
             document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ game.win
             document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ game.ties
             document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss
-            //console.log(game)
         })
         document.getElementById("btn_scissors").addEventListener("click",function(){
             let opponentChoose = Math.floor(Math.random() * 2) + 1
             game.rounds += 1
             let youChoose = scissors
-            game.gameResults(opponentChoose,youChoose,rounds)
+            game.gameResults(opponentChoose,youChoose)
             if (opponentChoose == rock){
                 game.loss +=1
             }
             if (opponentChoose == paper){
                 game.win += 1
             }
-            /*if (opponentChoose == scissors){
-                game.ties += 1
-            }*/
+            
             document.getElementById("rounds").innerHTML = "ROUNDS: "+ game.rounds 
             document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ game.win
             document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ game.ties
             document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss
-
         })
-        //game.gameReset();
     }
  
     gameResults(opponentChoose,youChoose){
@@ -274,8 +254,7 @@ class Game {
             document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ this.win
             document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ this.ties
             document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ this.loss 
-            ul.innerHTML = "";  
-            
+            ul.innerHTML = "";       
       } 
 
 // I will work on this in the future to make it show as Modal to show result of the whole game and make one button 
@@ -289,11 +268,10 @@ class Game {
         const showEndGameMessage = document.getElementById('game-over-message')
         showEndGameMessage.style.display = 'block'
         showEndGameMessage.innerHTML = 'You play: '+game.rounds+' rounds with '+ game.win+' win '+game.ties+ ' ties and '+
-         game.loss + ' loss! Would you like to play again!'
-        
+         game.loss + ' loss! Would you like to play again!'    
     }*/
 }
-// Start the game
+// Start the game by create new Game when user click spongebob or patrick
 game = new Game()
 document.querySelector("#patrick").addEventListener ("click", function () {
     game.startPatrickGame()   
@@ -302,7 +280,7 @@ document.querySelector("#patrick").addEventListener ("click", function () {
 document.querySelector("#spongebob").addEventListener ("click", function (){
     game.startGame()
 })
-
+// end game by reload the page
 document.getElementById("endGame").addEventListener("click",function(){
     //game.endGame()
     //game.gameReset()
