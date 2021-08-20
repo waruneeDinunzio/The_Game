@@ -23,14 +23,15 @@ class Game {
             // opponent use ramdom to choose rock paper or scissers
             const opponentChoose = Math.floor(Math.random() * 3) + 1
             // You choose rock = 1
-            const youChoose= rock
+            const youChoose = rock
             // Increment rounds by 1 when click
             game.rounds += 1 
+            // show your choose picture
             document.getElementById("rock").style.display = 'block'
             document.getElementById("paper").style.display = 'none'
             document.getElementById("scissors").style.display= 'none'
             // call gameResults function
-            game.gameResults(opponentChoose)
+            game.gameResults(opponentChoose,youChoose)
             if (opponentChoose == rock){
                 game.ties +=1
                 document.getElementById("opponent_rock").style.display = 'block'
