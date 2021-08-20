@@ -15,6 +15,9 @@ img {
 h1, h3 {
     text-align: center; 
 }
+div {
+    margin: 10px;
+}
 #gamePlaying {
     display: none;
 }
@@ -57,10 +60,12 @@ h1, h3 {
 #score {
     display: flex;
     justify-content: space-around;
+
 }
+
 #playing {
     display: flex;
-    justify-content:space-between;
+    justify-content:space-around;
 }
 #playing div {
     width: 300px;
@@ -69,17 +74,25 @@ h1, h3 {
 }
 
 #player_side {
+    
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
+    justify-content: space-between;
 }
 #endGame {
     position:absolute;
     bottom: 5%;
     right:20%;
 }
+#button {
+    
+    position:absolute;
+    bottom: 5%;
+    left:10%;
+}
 #rock, #paper, #scissors, #opponent_rock, #opponent_paper, #opponent_scissors {
     display: none;
-    width: 10vw;
+    width: 15vw;
 }
 #imgSpngebob, #imgPatrick {
     width: 10vw;
@@ -88,4 +101,7 @@ li {
     font-size: 20px;
     text-align: center; 
     list-style-type:none
+}
+#gamePlaying div {
+    border: 1px solid red;
 }
