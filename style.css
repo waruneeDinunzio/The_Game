@@ -9,8 +9,11 @@ body {
     background-size: 100% 100%;
   }*
 img {
-    width: 2vw;
+    width: 1.5vw;
     height: vh;
+}
+h1, h3 {
+    text-align: center; 
 }
 #gamePlaying {
     display: none;
@@ -35,6 +38,7 @@ img {
 .patrickButton {
     grid-column: 4;
     grid-row: 6;
+
 }
 /*.main-containner {
     
@@ -45,4 +49,39 @@ img {
 .header,#banner {
     text-align: center;
 
+}
+#score {
+    display: flex;
+    justify-content: space-around;
+}
+#playing {
+    display: flex;
+    justify-content:space-between;
+}
+#playing div {
+    width: 300px;
+    height: 100px;
+    border: 1px solid blue;
+}
+
+#player_side {
+    display: flex;
+    align-items: flex-end;
+}
+#endGame {
+    position:absolute;
+    bottom: 5%;
+    right:20%;
+}
+#rock, #paper, #scissors, #opponent_rock, #opponent_paper, #opponent_scissors {
+    display: none;
+    width: 10vw;
+}
+#imgSpngebob, #imgPatrick {
+    width: 10vw;
+}
+li {
+    font-size: 20px;
+    text-align: center; 
+    list-style-type:none
 }

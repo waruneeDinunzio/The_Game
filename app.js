@@ -47,18 +47,29 @@ class Game {
             //console.log(opponentChoose)
             //console.log(rock)
             let youChoose= rock
+            document.getElementById("rock").style.display = 'block'
+            document.getElementById("paper").style.display = 'none'
+            document.getElementById("scissors").style.display= 'none'
+
+            
             game.gameResults(opponentChoose,youChoose,rounds)
             if (opponentChoose == rock){
                 game.ties +=1
-                //console.log(opponentChoose)
+                document.getElementById("opponent_rock").style.display = 'block'
+                document.getElementById("opponent_paper").style.display = 'none'
+                document.getElementById("opponent_scissors").style.display= 'none'
             }
             if (opponentChoose == paper){
                 game.loss += 1
-                //console.log(game.loss)
+                document.getElementById("opponent_rock").style.display = 'none'
+                document.getElementById("opponent_paper").style.display = 'block'
+                document.getElementById("opponent_scissors").style.display= 'none'
             }
             if (opponentChoose == scissors){
                 game.win += 1
-                //console.log(game.win)
+                document.getElementById("opponent_rock").style.display = 'none'
+                document.getElementById("opponent_paper").style.display = 'none'
+                document.getElementById("opponent_scissors").style.display= 'block'
             }
             document.getElementById("rounds").innerHTML = "ROUNDS: "+ game.rounds 
             document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ game.win
@@ -72,15 +83,27 @@ class Game {
             let opponentChoose = Math.floor(Math.random() * 3) + 1
             game.rounds += 1
             let youChoose = paper
+            document.getElementById("rock").style.display = 'none'
+            document.getElementById("paper").style.display = 'block'
+            document.getElementById("scissors").style.display= 'none'
             game.gameResults(opponentChoose,youChoose,rounds)
             if (opponentChoose == rock){
                 game.win +=1
+                document.getElementById("opponent_rock").style.display = 'block'
+                document.getElementById("opponent_paper").style.display = 'none'
+                document.getElementById("opponent_scissors").style.display= 'none'
             }
             if (opponentChoose == paper){
                 game.ties += 1
+                document.getElementById("opponent_rock").style.display = 'none'
+                document.getElementById("opponent_paper").style.display = 'block'
+                document.getElementById("opponent_scissors").style.display= 'none'
             }
             if (opponentChoose == scissors){
                 game.loss += 1
+                document.getElementById("opponent_rock").style.display = 'none'
+                document.getElementById("opponent_paper").style.display = 'none'
+                document.getElementById("opponent_scissors").style.display= 'block'
             }
             document.getElementById("rounds").innerHTML = "ROUNDS: "+ game.rounds 
             document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ game.win
@@ -93,15 +116,27 @@ class Game {
             let opponentChoose = Math.floor(Math.random() * 3) + 1
             game.rounds += 1
             let youChoose = scissors
+            document.getElementById("rock").style.display = 'none'
+            document.getElementById("paper").style.display = 'none'
+            document.getElementById("scissors").style.display= 'block'
             game.gameResults(opponentChoose,youChoose,rounds)
             if (opponentChoose == rock){
                 game.loss +=1
+                document.getElementById("opponent_rock").style.display = 'block'
+                document.getElementById("opponent_paper").style.display = 'none'
+                document.getElementById("opponent_scissors").style.display= 'none'
             }
             if (opponentChoose == paper){
                 game.win += 1
+                document.getElementById("opponent_rock").style.display = 'none'
+                document.getElementById("opponent_paper").style.display = 'block'
+                document.getElementById("opponent_scissors").style.display= 'none'
             }
             if (opponentChoose == scissors){
                 game.ties += 1
+                document.getElementById("opponent_rock").style.display = 'none'
+                document.getElementById("opponent_paper").style.display = 'none'
+                document.getElementById("opponent_scissors").style.display= 'block'
             }
             document.getElementById("rounds").innerHTML = "ROUNDS: "+ game.rounds 
             document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ game.win
@@ -240,7 +275,7 @@ class Game {
             youChoose = "<img src = 'picture/greenScissor.jpg'>"
             opponentChoose = "<img src = 'picture/greenScissor.jpg'>"
         }
-            li.innerHTML = ""+youChoose + ""+game.rounds + ""+opponentChoose
+            li.innerHTML = "  "+youChoose + "     "+game.rounds + "     "+opponentChoose
             ul.appendChild(li)
     }
 
