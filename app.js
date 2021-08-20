@@ -1,23 +1,6 @@
-//let game
-    /*document.querySelector("#spongebob").addEventListener ("click", function () {
-        if(game){//if already has game object
-           game.gameReset() //reset game
-           game.startGame() //start to play game
-           console.log(game)//for test if it already has game object
-           game.endGame()
-        } else{ //if not game object
-            game = new Game() //create new game
-            //game.gameReset();
-            game.startGame()
-            game.endGame()
-            //console.log(game)
-        }
-        
-    })*/
-    
-    // for Patric mode
+
 const ul = document.querySelector('#show_result_list')  
-//startGame()
+// create class Game for game
 class Game {
     constructor(win, ties, loss, rounds,gameStarted){
         this.win = 0
@@ -30,6 +13,7 @@ class Game {
     startGame(){
         //let opponentChoose = Math.floor(Math.random() * 3) + 1
         this.gameStarted = true;
+        // hide first page and show game page
         const hideOverlay = document.getElementById('overlay');
         hideOverlay.style.display = 'none';
         const hideGame = document.getElementById('gamePlaying');
@@ -37,12 +21,10 @@ class Game {
         const rock = 1
         const paper = 2
         const scissors = 3
-        //let rounds = 0
-        //game.gameReset()
+        // Add eventlistener when user click rock button
         document.getElementById("btn_rock").addEventListener("click",function(){
             let opponentChoose = Math.floor(Math.random() * 3) + 1
-            //console.log(opponentChoose)
-            //console.log(rock)
+    
             game.rounds += 1 
             //console.log(opponentChoose)
             //console.log(rock)
@@ -52,7 +34,7 @@ class Game {
             document.getElementById("scissors").style.display= 'none'
 
             
-            game.gameResults(opponentChoose,youChoose,rounds)
+            game.gameResults(opponentChoose,youChoose)
             if (opponentChoose == rock){
                 game.ties +=1
                 document.getElementById("opponent_rock").style.display = 'block'
@@ -143,8 +125,7 @@ class Game {
             document.getElementById("ties").innerHTML = "Ties:"+ "<br>"+ game.ties
             document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss
 
-        })
-        
+        })    
     }
 
     // Start to play with Patric who is a star fish. His hand can't not do scissor so he just do rock and paper
@@ -157,18 +138,16 @@ class Game {
         const rock = 1
         const paper = 2
         const scissors = 3
-        //let rounds = 0
         
         document.getElementById("btn_rock").addEventListener("click",function(){
-            //let rock = 2
+        // opponent use ramdom to choose rock paper or scissers
         let opponentChoose = Math.floor(Math.random() * 2) + 1
-        //console.log(opponentChoose)
-        //console.log(rock)
-        game.rounds += 1 
-        //console.log(opponentChoose)
-        //console.log(rock)
+        // you choose rock = 2
         let youChoose= rock
-        game.gameResults(opponentChoose,youChoose,rounds)
+        // Increment rounds by 1 when click
+        game.rounds += 1 
+        // call gameResults functon
+        game.gameResults(opponentChoose,youChoose)
         if (opponentChoose == rock){
             game.ties +=1
             //console.log(opponentChoose)
@@ -230,10 +209,8 @@ class Game {
         })
         //game.gameReset();
     }
-
-    
+ 
     gameResults(opponentChoose,youChoose){
-        //game.gameReset()
         const rock = 1
         const paper = 2
         const scissors = 3
@@ -300,7 +277,9 @@ class Game {
             ul.innerHTML = "";  
             
       } 
-*/
+
+// I will work on this in the future to make it show as Modal to show result of the whole game and make one button 
+//to go back to first page
     endGame() {
         this.gameStarted = false;
         const hideOverlay = document.getElementById('overlay');
@@ -312,22 +291,9 @@ class Game {
         showEndGameMessage.innerHTML = 'You play: '+game.rounds+' rounds with '+ game.win+' win '+game.ties+ ' ties and '+
          game.loss + ' loss! Would you like to play again!'
         
-    }
+    }*/
 }
-/*if(game){//if already has game object
-    game.gameReset() //reset game
-    game.startPatrickGame() //start to play game
-    console.log(game)//for test if it already has game object
-    game.endGame()
- } else{ //if not game object
- game = new Game() //create new game
- //game.gameReset();
- game.startPatrickGame()
- //console.log(game)
- game.endGame()
- }*/
-
-
+// Start the game
 game = new Game()
 document.querySelector("#patrick").addEventListener ("click", function () {
     game.startPatrickGame()   
@@ -340,6 +306,5 @@ document.querySelector("#spongebob").addEventListener ("click", function (){
 document.getElementById("endGame").addEventListener("click",function(){
     //game.endGame()
     //game.gameReset()
-    window.location.reload()
-    
+    window.location.reload()    
 })
