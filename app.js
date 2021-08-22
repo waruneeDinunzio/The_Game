@@ -140,6 +140,9 @@ class Game {
             let youChoose= rock
             // Increment rounds by 1 when click
             game.rounds += 1 
+            document.getElementById("rock").style.display = 'block'
+            document.getElementById("paper").style.display = 'none'
+            document.getElementById("scissors").style.display= 'none'
             // call gameResults functon
             game.gameResults(opponentChoose,youChoose)
             if (opponentChoose == rock){
@@ -159,6 +162,9 @@ class Game {
             let opponentChoose = Math.floor(Math.random() * 2) + 1
             game.rounds += 1
             let youChoose = paper
+            document.getElementById("rock").style.display = 'none'
+            document.getElementById("paper").style.display = 'block'
+            document.getElementById("scissors").style.display= 'none'
             game.gameResults(opponentChoose,youChoose)
             if (opponentChoose == rock){
                 game.win +=1
@@ -176,6 +182,9 @@ class Game {
             let opponentChoose = Math.floor(Math.random() * 2) + 1
             game.rounds += 1
             let youChoose = scissors
+            document.getElementById("rock").style.display = 'none'
+            document.getElementById("paper").style.display = 'none'
+            document.getElementById("scissors").style.display= 'block'
             game.gameResults(opponentChoose,youChoose)
             if (opponentChoose == rock){
                 game.loss +=1
