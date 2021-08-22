@@ -1,5 +1,9 @@
-
-const ul = document.querySelector('#show_result_list')  
+const rock = 1
+const paper = 2
+const scissors = 3
+const ul = document.querySelector('#show_result_list') 
+const hideOverlay = document.getElementById('overlay')
+const hideGame = document.getElementById('gamePlaying')
 // create class Game for game
 class Game {
     constructor(win, ties, loss, rounds){
@@ -10,14 +14,9 @@ class Game {
     }
 // create startGame function
     startGame(){
-        // hide first page and show game page
-        const hideOverlay = document.getElementById('overlay');
+        // hide first page and show game page   
         hideOverlay.style.display = 'none';
-        const hideGame = document.getElementById('gamePlaying');
         hideGame.style.display = 'block';
-        const rock = 1
-        const paper = 2
-        const scissors = 3
         // Add eventlistener when user click rock button
         document.getElementById("btn_rock").addEventListener("click",function(){
             // opponent use ramdom to choose rock paper or scissers
@@ -125,17 +124,12 @@ class Game {
 
     // Start to play with Patric who is a star fish. His hand can't not do scissor so he just do rock and paper
     startPatrickGame(){
-        const hideOverlay = document.getElementById('overlay');
         hideOverlay.style.display = 'none';
-        const hideGame = document.getElementById('gamePlaying');
         hideGame.style.display = 'block';
-        const rock = 1
-        const paper = 2
-        const scissors = 3
         
         document.getElementById("btn_rock").addEventListener("click",function(){
             // opponent(Patric) use ramdom to choose rock or paper
-            let opponentChoose = Math.floor(Math.random() * 2) + 1
+            const opponentChoose = Math.floor(Math.random() * 2) + 1
             // you choose rock = 2
             let youChoose= rock
             // Increment rounds by 1 when click
@@ -201,10 +195,7 @@ class Game {
     }
  
     gameResults(opponentChoose,youChoose){
-        const rock = 1
-        const paper = 2
-        const scissors = 3
-        let ul = document.getElementById("show_result_list")
+
         let li = document.createElement("li")
         if (youChoose == rock && opponentChoose==rock) {
             youChoose = "<img src = 'picture/greenRock.jpg'>"
@@ -250,10 +241,10 @@ class Game {
             li.innerHTML = "  "+youChoose + "     "+game.rounds + "     "+opponentChoose
             ul.appendChild(li)
     }
-
-    /* Not set the end game button yet (new idea: click end game to go back to strating page with spongebob or patrick button) 
-    Just want to test gameReset() when click spongebob or click patrick to strat the new game. it'll call 
-    gameReset() so it should be reset all game object property. ???
+/*
+    //(new idea: click end game to go back to strating page with spongebob or patrick button) 
+    //Just want to test gameReset() when click spongebob or click patrick to strat the new game. it'll call 
+    //gameReset() so it should be reset all game object property. ???
     gameReset() {
         //document.getElementById("endGame").addEventListener("click",function(){
             //let ul = document.querySelector('#show_result_list').children;
@@ -277,7 +268,7 @@ class Game {
     endGame() {
         this.gameStarted = false;
         const hideOverlay = document.getElementById('overlay');
-        hideOverlay.style.display = 'block';
+        hideOverlay.style.display = 'grid';
         const hideGame = document.getElementById('gamePlaying');
         hideGame.style.display = 'none';
         const showEndGameMessage = document.getElementById('game-over-message')
