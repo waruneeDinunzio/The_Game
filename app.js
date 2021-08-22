@@ -242,6 +242,11 @@ class Game {
             youChoose = "<img src = 'picture/greenScissor.jpg'>"
             opponentChoose = "<img src = 'picture/greenScissor.jpg'>"
         }
+        
+        if (ul.childElementCount > 9) {
+            ul.removeChild(ul.firstElementChild)
+        }
+        console.log(ul.firstElementChild)
             li.innerHTML = "  "+youChoose + "     "+game.rounds + "     "+opponentChoose
             ul.appendChild(li)
     }

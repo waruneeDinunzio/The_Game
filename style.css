@@ -12,9 +12,21 @@ img {
     width: 1.5vw;
     height: vh;
 }
-h1, h3 {
+h1 {
     text-align: center; 
-    color: crimson;
+    color: rgb(228, 28, 168);
+    font-family: 'Freckle Face', cursive;
+    font-weight: bold;
+    font-size: 35px;
+}
+h2 {
+    text-align: center; 
+    color: black;
+    font-family: 'Freckle Face', cursive;
+    font-style: italic;
+}
+h3 {
+    text-align: center; 
 }
 div {
     margin: 10px;
