@@ -2,8 +2,12 @@ const rock = 1
 const paper = 2
 const scissors = 3
 const ul = document.querySelector('#show_result_list') 
-const hideOverlay = document.getElementById('overlay')
-const hideGame = document.getElementById('gamePlaying')
+const hideOverlay = document.getElementById('overlay').style
+const hideGame = document.getElementById('gamePlaying').style
+const rockImage = document.getElementById("rock").style
+const paperImage = document.getElementById("paper").style
+const scissorImage = document.getElementById("scissors").style
+
 // create class Game for game
 class Game {
     constructor(win, ties, loss, rounds){
@@ -15,8 +19,8 @@ class Game {
 // create startGame function
     startGame(){
         // hide first page and show game page   
-        hideOverlay.style.display = 'none';
-        hideGame.style.display = 'block';
+        hideOverlay.display = 'none';
+        hideGame.display = 'block';
         // Add eventlistener when user click rock button
         document.getElementById("btn_rock").addEventListener("click",function(){
             // opponent use ramdom to choose rock paper or scissers
@@ -25,10 +29,10 @@ class Game {
             const youChoose = rock
             // Increment rounds by 1 when click
             game.rounds += 1 
-            // show your choose picture
-            document.getElementById("rock").style.display = 'block'
-            document.getElementById("paper").style.display = 'none'
-            document.getElementById("scissors").style.display= 'none'
+            // show your choose picture    
+            rockImage.display = 'block'
+            paperImage.display = 'none'
+            scissorImage.display = 'none'   
             // call gameResults function
             game.gameResults(opponentChoose,youChoose)
             if (opponentChoose == rock){
@@ -59,9 +63,9 @@ class Game {
             const opponentChoose = Math.floor(Math.random() * 3) + 1
             game.rounds += 1
             const youChoose = paper
-            document.getElementById("rock").style.display = 'none'
-            document.getElementById("paper").style.display = 'block'
-            document.getElementById("scissors").style.display= 'none'
+            rockImage.display = 'none'
+            paperImage.display = 'block'
+            scissorImage.display = 'none'  
             game.gameResults(opponentChoose,youChoose)
             if (opponentChoose == rock){
                 game.win +=1
@@ -92,9 +96,9 @@ class Game {
             game.rounds += 1
             const youChoose = scissors
             // Show scissors's picture
-            document.getElementById("rock").style.display = 'none'
-            document.getElementById("paper").style.display = 'none'
-            document.getElementById("scissors").style.display= 'block'
+            rockImage.display = 'none'
+            paperImage.display = 'none'
+            scissorImage.display = 'block'  
             game.gameResults(opponentChoose,youChoose)
             if (opponentChoose == rock){
                 game.loss +=1
@@ -124,25 +128,25 @@ class Game {
 
     // Start to play with Patric who is a star fish. His hand can't not do scissor so he just do rock and paper
     startPatrickGame(){
-        hideOverlay.style.display = 'none';
-        hideGame.style.display = 'block';
-        
+        hideOverlay.display = 'none';
+        hideGame.display = 'block';
+        //const patrickChoose = Math.floor(Math.random() * 2) + 1
         document.getElementById("btn_rock").addEventListener("click",function(){
             // opponent(Patric) use ramdom to choose rock or paper
-            const opponentChoose = Math.floor(Math.random() * 2) + 1
+            const patrickChoose = Math.floor(Math.random() * 2) + 1
             // you choose rock = 2
-            let youChoose= rock
-            // Increment rounds by 1 when click
-            game.rounds += 1 
-            document.getElementById("rock").style.display = 'block'
-            document.getElementById("paper").style.display = 'none'
-            document.getElementById("scissors").style.display= 'none'
+            const youChoose= rock
+            // Increment rounds by 1 when click rock button
+            game.rounds += 1   
+            paperImage.display = 'none'
+            scissorImage.display= 'none'
+            rockImage.display = 'block'
             // call gameResults functon
-            game.gameResults(opponentChoose,youChoose)
-            if (opponentChoose == rock){
+            game.gameResults(patrickChoose,youChoose)
+            if (patrickChoose == rock){
                 game.ties +=1
             }
-            if (opponentChoose == paper){
+            if (patrickChoose == paper){
                 game.loss += 1
             }
 
@@ -153,17 +157,17 @@ class Game {
         })
 
         document.getElementById("btn_paper").addEventListener("click",function(){
-            let opponentChoose = Math.floor(Math.random() * 2) + 1
+            const patrickChoose = Math.floor(Math.random() * 2) + 1
             game.rounds += 1
-            let youChoose = paper
-            document.getElementById("rock").style.display = 'none'
-            document.getElementById("paper").style.display = 'block'
-            document.getElementById("scissors").style.display= 'none'
-            game.gameResults(opponentChoose,youChoose)
-            if (opponentChoose == rock){
+            const youChoose = paper
+            rockImage.display = 'none'
+            paperImage.display = 'block'
+            scissorImage.display = 'none'  
+            game.gameResults(patrickChoose,youChoose)
+            if (patrickChoose == rock){
                 game.win +=1
             }
-            if (opponentChoose == paper){
+            if (patrickChoose == paper){
                 game.ties += 1
             }
         
@@ -173,17 +177,17 @@ class Game {
             document.getElementById("loss").innerHTML = "Win:"+ "<br>"+ game.loss
         })
         document.getElementById("btn_scissors").addEventListener("click",function(){
-            let opponentChoose = Math.floor(Math.random() * 2) + 1
+            const patrickChoose = Math.floor(Math.random() * 2) + 1
             game.rounds += 1
-            let youChoose = scissors
-            document.getElementById("rock").style.display = 'none'
-            document.getElementById("paper").style.display = 'none'
-            document.getElementById("scissors").style.display= 'block'
-            game.gameResults(opponentChoose,youChoose)
-            if (opponentChoose == rock){
+            const youChoose = scissors
+            rockImage.display = 'none'
+            paperImage.display = 'none'
+            scissorImage.display = 'block'  
+            game.gameResults(patrickChoose,youChoose)
+            if (patrickChoose == rock){
                 game.loss +=1
             }
-            if (opponentChoose == paper){
+            if (patrickChoose == paper){
                 game.win += 1
             }
             
@@ -195,8 +199,7 @@ class Game {
     }
  
     gameResults(opponentChoose,youChoose){
-
-        let li = document.createElement("li")
+        const li = document.createElement("li")
         if (youChoose == rock && opponentChoose==rock) {
             youChoose = "<img src = 'picture/greenRock.jpg'>"
             opponentChoose = "<img src = 'picture/greenRock.jpg'>"  
@@ -233,13 +236,13 @@ class Game {
             youChoose = "<img src = 'picture/greenScissor.jpg'>"
             opponentChoose = "<img src = 'picture/greenScissor.jpg'>"
         }
-        
+        // If result shows more than 10 line, remove first list
         if (ul.childElementCount > 9) {
             ul.removeChild(ul.firstElementChild)
         }
-        console.log(ul.firstElementChild)
-            li.innerHTML = "  "+youChoose + "     "+game.rounds + "     "+opponentChoose
-            ul.appendChild(li)
+        
+        li.innerHTML = " "+ youChoose + " "+ game.rounds + " "+ opponentChoose
+        ul.appendChild(li)
     }
 /*
     //(new idea: click end game to go back to strating page with spongebob or patrick button) 
