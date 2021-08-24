@@ -245,19 +245,21 @@ class Game {
         ul.appendChild(li)
     }
 /*
-    //(new idea: click end game to go back to strating page with spongebob or patrick button) 
-    //Just want to test gameReset() when click spongebob or click patrick to strat the new game. it'll call 
-    //gameReset() so it should be reset all game object property. ???
+    //I want to use gameReset function to reset the game to zero and call endGame to go back to first page 
+    a show user the total resule score. Then user and click spongebob or click patrick to strat the new game. 
+    Then put this two function to add event listener when click end game(line 295,296). 
+    When I test it, it went back to first page with endGamMessage show on page. when click spongbob or patrick
+    it goes to strateGame page with reset score to 0. but when I click rock, paper or scissors, all prev score came back.
+    Why?? what is wrong with the code? how to solve this? or I should just reloard the whole page.
+
     gameReset() {
         //document.getElementById("endGame").addEventListener("click",function(){
             //let ul = document.querySelector('#show_result_list').children;
-            
-            console.log(game)
+            //console.log(game)
             this.rounds = 0
             this.win = 0
             this.ties = 0
             this.loss = 0
-            //console.log("you click to end game")
 
             document.getElementById("rounds").innerHTML = "ROUNDS: "+ this.rounds 
             document.getElementById("youWin").innerHTML = "Win:"+ "<br>"+ this.win
@@ -266,8 +268,6 @@ class Game {
             ul.innerHTML = "";       
       } 
 
-// I will work on this in the future to make it show as Modal to show result of the whole game and make one button 
-//to go back to first page
     endGame() {
         this.gameStarted = false;
         const hideOverlay = document.getElementById('overlay');
@@ -277,9 +277,13 @@ class Game {
         const showEndGameMessage = document.getElementById('game-over-message')
         showEndGameMessage.style.display = 'block'
         showEndGameMessage.innerHTML = 'You play: '+game.rounds+' rounds with '+ game.win+' win '+game.ties+ ' ties and '+
-         game.loss + ' loss! Would you like to play again!'    
-    }*/
+         game.loss + ' loss! Would you like to play again!'  
+    }  
+// I will work on this in the future to make it show as Modal to show result of the whole game and make one button 
+//to go back to first page (reload the page).  
+*/
 }
+
 // Start the game by create new Game when user click spongebob or patrick
 game = new Game()
 document.querySelector("#patrick").addEventListener ("click", function () {
